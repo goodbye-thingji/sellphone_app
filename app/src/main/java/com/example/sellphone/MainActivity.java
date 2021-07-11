@@ -2,6 +2,7 @@ package com.example.sellphone;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,19 +35,6 @@ public class MainActivity extends AppCompatActivity {
 
         final GridView gv = (GridView) findViewById(R.id.gridView1);
         MyGridAdapter gAdapter = new MyGridAdapter(this);
-        gAdapter.addItem("아이폰 12 mini", R.drawable.iphone12_1);
-        gAdapter.addItem("아이폰 12", R.drawable.iphone12_2);
-        gAdapter.addItem("아이폰 12 PRO", R.drawable.iphone12_3);
-        gAdapter.addItem("아이폰 12 PRO MAX", R.drawable.iphone12_4);
-        gAdapter.addItem("갤럭시 S21", R.drawable.s21_1);
-        gAdapter.addItem("갤럭시 S21+", R.drawable.s21_2);
-        gAdapter.addItem("갤럭시 S21 Ultra", R.drawable.s21_3);
-        gAdapter.addItem("갤럭시 Z Fold", R.drawable.z_1);
-        gAdapter.addItem("갤럭시 노트20",R.drawable.note20_1);
-        gAdapter.addItem("갤럭시 노트20 Ultra", R.drawable.note20_2);
-        gAdapter.addItem("갤럭시 Z Flip (5G)", R.drawable.zflip_5g);
-        gAdapter.addItem("갤럭시 Z Flip (LTE)", R.drawable.zflip_lte);
-
         gv.setAdapter(gAdapter);
     }
 
@@ -58,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public int getCount() {
-            return posterID.length;
+            return phoneID.length;
         }
 
         public Object getItem(int position) {
@@ -71,23 +59,28 @@ public class MainActivity extends AppCompatActivity {
             return 0;
         }
 
-        Integer[] posterID = {R.drawable.iphone12_1, R.drawable.iphone12_2,
+        Integer[] phoneID = {R.drawable.iphone12_1, R.drawable.iphone12_2,
                 R.drawable.iphone12_3, R.drawable.iphone12_4, R.drawable.s21_1, R.drawable.s21_2,
                 R.drawable.s21_3, R.drawable.z_1,R.drawable.note20_1, R.drawable.note20_2,
                 R.drawable.zflip_5g, R.drawable.zflip_lte};
 
         public View getView(int position, View convertView, ViewGroup parent) {
             ImageView imageview = new ImageView(context);
-            imageview.setLayoutParams(new GridView.LayoutParams(200, 300));
+            imageview.setLayoutParams(new GridView.LayoutParams(250, 400));
             imageview.setScaleType(ImageView.ScaleType.FIT_CENTER);
             imageview.setPadding(5, 5, 5, 5);
 
-            imageview.setImageResource(posterID[position]);
+            imageview.setImageResource(phoneID[position]);
 
+            imageview.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(getApplicationContext(), iphone12_mini.class);
+                    startActivity(i);
+                }
+            });
             return imageview;
-        }
 
-        public void addItem(String s, int iphone12_1) {
         }
     }
     @Override
