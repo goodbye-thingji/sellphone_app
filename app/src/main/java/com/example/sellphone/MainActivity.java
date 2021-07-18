@@ -92,36 +92,36 @@ public class MainActivity<phone1> extends AppCompatActivity {
                 startActivity(it4);
                 break;
             case R.id.iv5:
-                Intent it5 = new Intent(this, iphone12.class);
+                Intent it5 = new Intent(this, galaxys21.class);
                 startActivity(it5);
                 break;
             case R.id.iv6:
-                Intent it6 = new Intent(this, iphone12.class);
+                Intent it6 = new Intent(this, galaxys21plus.class);
                 startActivity(it6);
                 break;
             case R.id.iv7:
-                Intent it7 = new Intent(this, iphone12.class);
+                Intent it7 = new Intent(this, galaxys21ultra.class);
                 startActivity(it7);
                 break;
             case R.id.iv8:
-                Intent it8 = new Intent(this, iphone12.class);
+                Intent it8 = new Intent(this, galaxyzfold.class);
                 startActivity(it8);
                 break;
             case R.id.iv9:
-                Intent it9 = new Intent(this, iphone12.class);
+                Intent it9 = new Intent(this, galaxynote20.class);
                 startActivity(it9);
                 break;
 
             case R.id.iv10:
-                Intent it10 = new Intent(this, iphone12.class);
+                Intent it10 = new Intent(this, galaxynote20ultra.class);
                 startActivity(it10);
                 break;
             case R.id.iv11:
-                Intent it11 = new Intent(this, iphone12.class);
+                Intent it11 = new Intent(this, galaxyzflip5g.class);
                 startActivity(it11);
                 break;
             case R.id.iv12:
-                Intent it12 = new Intent(this, iphone12.class);
+                Intent it12 = new Intent(this, galaxyzfliplte.class);
                 startActivity(it12);
                 break;
 

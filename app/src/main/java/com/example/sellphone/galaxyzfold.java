@@ -13,15 +13,14 @@ import android.widget.TextView;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class iphone12 extends AppCompatActivity {
-    private ImageView ip12;
+public class galaxyzfold extends AppCompatActivity {
+    private ImageView zfold;
     private Button button;
     String[] telecom = {"=== 선택하세요 ===","SKT(5G) / 89000원", "KT(5G) / 90000원", "LG U+(5G) / 85000원"};
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.iphone12);
+        setContentView(R.layout.galaxyzfold);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
@@ -37,12 +36,12 @@ public class iphone12 extends AppCompatActivity {
 
         // 스피너에서 선택 했을 경우 이벤트 처리
 
-        ip12 = (ImageView) findViewById(R.id.iphone12mini);
+        zfold = (ImageView) findViewById(R.id.zfold);
         button = (Button)findViewById(R.id.bt1);
         findViewById(R.id.bt1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), iphone12select.class);
+                Intent i = new Intent(getApplicationContext(), galaxyzfoldselect.class);
                 startActivity(i);
 
             }

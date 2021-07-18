@@ -14,11 +14,11 @@
 
     </FrameLayout>
     <ImageView
-        android:id="@+id/iphone12"
+        android:id="@+id/galaxys21"
         android:layout_width="wrap_content"
         android:layout_height="400dp"
         android:layout_gravity="center"
-        app:srcCompat="@drawable/iphone12_2" />
+        app:srcCompat="@drawable/s21_1" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp">
@@ -40,10 +40,10 @@
         android:layout_height="50dp">
         <TextView
             android:id="@+id/gb"
-            android:layout_width="400dp"
+            android:layout_width="85dp"
             android:layout_height="27dp"
             android:clickable="false"
-            android:text="용량 : 64GB (128GB, 256GB는 추가 금액 발생)"
+            android:text="용량 : 256GB"
             android:visibility="visible" />
 
     </LinearLayout>

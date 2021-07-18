@@ -5,17 +5,17 @@
     android:layout_height="match_parent">
     <item
         android:id="@+id/menu_person"
-        android:title="person"
+        android:title="공지사항"
         android:icon="@drawable/ic_person"
         app:showAsAction="always"/>
     <item
         android:id="@+id/menu_android"
-        android:title="android"
+        android:title="판매점 정보"
         android:icon="@drawable/ic_android"
         app:showAsAction="always"/>
     <item
         android:id="@+id/menu_bookmark"
-        android:title="bookmark"
+        android:title="어플 사용법"
         android:icon="@drawable/ic_bookmark"
         app:showAsAction="always"/>
 
