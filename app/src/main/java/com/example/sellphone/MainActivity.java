@@ -3,6 +3,7 @@ package com.example.sellphone;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -23,6 +24,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -31,7 +33,10 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.sellphone.ui.gallery.GalleryFragment;
 import com.example.sellphone.ui.home.HomeFragment;
+import com.example.sellphone.ui.info;
+import com.example.sellphone.ui.mallinfo;
 import com.example.sellphone.ui.slideshow.SlideshowFragment;
+import com.example.sellphone.ui.userguide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -51,6 +56,7 @@ public class MainActivity<phone1> extends AppCompatActivity {
     private static final int RC_SIGN_IN = 5252;
 
     private ImageView ivMenu;
+    private Fragment GalleryFragment, HomeFragment, SlideshowFragment;
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     private long lastTime;
@@ -98,8 +104,9 @@ public class MainActivity<phone1> extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Uri uri = Uri.parse("https://open.kakao.com/o/sQRIYupd");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
             }
 
         });
@@ -115,13 +122,13 @@ public class MainActivity<phone1> extends AppCompatActivity {
                 String title = menuItem.getTitle().toString();
 
                 if (id == R.id.inform) {
-                    Intent i = new Intent(context, GalleryFragment.class);
+                    Intent i = new Intent(context, info.class);
                     context.startActivity(i);
                 } else if (id == R.id.mallinfo) {
-                    Intent i2 = new Intent(context, HomeFragment.class);
+                    Intent i2 = new Intent(context, mallinfo.class);
                     context.startActivity(i2);
                 } else if (id == R.id.userguide) {
-                    Intent i3 = new Intent(context, SlideshowFragment.class);
+                    Intent i3 = new Intent(context, userguide.class);
                     context.startActivity(i3);
                 }
 
@@ -135,8 +142,9 @@ public class MainActivity<phone1> extends AppCompatActivity {
         ivMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "onClick: 클릭됨");
                 drawerLayout.openDrawer(Gravity.LEFT);
+
+
             }
         });
 
@@ -236,7 +244,7 @@ public class MainActivity<phone1> extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main,menu);
+        getMenuInflater().inflate(R.menu.activity_main_drawer,menu);
         return true;
     }
     @Override

@@ -43,6 +43,9 @@
         <activity android:name=".galaxyzflip5gselect"/>
         <activity android:name=".galaxynote20ultraselect"/>
         <activity android:name=".galaxynote20select"/>
+        <activity android:name=".ui.info"/>
+        <activity android:name=".ui.mallinfo"/>
+        <activity android:name=".ui.userguide"/>
     </application>
 
 </manifest>
