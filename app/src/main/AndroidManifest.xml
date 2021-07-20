@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light">
-
+        <activity android:name=".iphone12_mini_lowest_price"></activity>
         <activity android:name=".Main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,32 +17,33 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".iphone12_mini"/>
-        <activity android:name=".iphone12"/>
-        <activity android:name=".iphone12pro"/>
-        <activity android:name=".iphone12promax"/>
-        <activity android:name=".galaxys21"/>
-        <activity android:name=".galaxys21plus"/>
-        <activity android:name=".galaxys21ultra"/>
-        <activity android:name=".galaxyzfold"/>
-        <activity android:name=".galaxynote20"/>
-        <activity android:name=".galaxynote20ultra"/>
-        <activity android:name=".galaxyzflip5g"/>
-        <activity android:name=".galaxyzfliplte"/>
-        <activity android:name=".galaxys21select"/>
-        <activity android:name=".galaxys21plusselect"/>
-        <activity android:name=".galaxys21ultraselect"/>
-        <activity android:name=".galaxyzfoldselect"/>
-        <activity android:name=".iphone12_miniselect"/>
-        <activity android:name=".iphone12select"/>
-        <activity android:name=".iphone12proselect"/>
-        <activity android:name=".iphone12promaxselect"/>
-        <activity android:name=".galaxyzfliplteselect"/>
-        <activity android:name=".galaxyzflip5gselect"/>
-        <activity android:name=".galaxynote20ultraselect"/>
-        <activity android:name=".galaxynote20select"/>
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".iphone12_mini" />
+        <activity android:name=".iphone12" />
+        <activity android:name=".iphone12pro" />
+        <activity android:name=".iphone12promax" />
+        <activity android:name=".galaxys21" />
+        <activity android:name=".galaxys21plus" />
+        <activity android:name=".galaxys21ultra" />
+        <activity android:name=".galaxyzfold" />
+        <activity android:name=".galaxynote20" />
+        <activity android:name=".galaxynote20ultra" />
+        <activity android:name=".galaxyzflip5g" />
+        <activity android:name=".galaxyzfliplte" />
+        <activity android:name=".galaxys21select" />
+        <activity android:name=".galaxys21plusselect" />
+        <activity android:name=".galaxys21ultraselect" />
+        <activity android:name=".galaxyzfoldselect" />
+        <activity android:name=".iphone12_miniselect" />
+        <activity android:name=".iphone12select" />
+        <activity android:name=".iphone12proselect" />
+        <activity android:name=".iphone12promaxselect" />
+        <activity android:name=".galaxyzfliplteselect" />
+        <activity android:name=".galaxyzflip5gselect" />
+        <activity android:name=".galaxynote20ultraselect" />
+        <activity android:name=".galaxynote20select" />
     </application>
 
 </manifest>

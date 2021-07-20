@@ -46,6 +46,21 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 public class MainActivity<phone1> extends AppCompatActivity {
     private static final String TAG = "Main_Activity";
     private static final int RC_SIGN_IN = 5252;
@@ -61,6 +76,7 @@ public class MainActivity<phone1> extends AppCompatActivity {
     GoogleSignInOptions gso;
     GoogleSignInClient mGoogleSignInClient;
     GoogleSignInAccount account;
+    //
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -101,7 +117,6 @@ public class MainActivity<phone1> extends AppCompatActivity {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-
         });
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -147,6 +162,7 @@ public class MainActivity<phone1> extends AppCompatActivity {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         account = GoogleSignIn.getLastSignedInAccount(this);
         if (account != null) {
+            handleValidateUser();
             Toast.makeText(getApplicationContext(), "반갑습니다, " + account.getDisplayName() + " 님", Toast.LENGTH_SHORT).show();
         } else {
             Intent signInIntent = mGoogleSignInClient.getSignInIntent();
@@ -219,10 +235,23 @@ public class MainActivity<phone1> extends AppCompatActivity {
         }
     }
 
+    private void handleValidateUser() {
+        try {
+            if (account != null) {
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("idToken", account.getIdToken());
+            } else {
+                Toast.makeText(getApplicationContext(), "존재하지 않는 사용자입니다", Toast.LENGTH_SHORT).show();
+            }
+        } catch (JSONException e) {
+            Log.w(TAG, "JSONObject: " + e.getMessage());
+        }
+    }
+
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             account = completedTask.getResult(ApiException.class);
-            // TODO: Server-side Authentication of account.getIdToken()
+            handleValidateUser();
             Toast.makeText(getApplicationContext(), "환영합니다, " + account.getDisplayName() + " 님", Toast.LENGTH_SHORT).show();
         } catch (ApiException e) {
             Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());

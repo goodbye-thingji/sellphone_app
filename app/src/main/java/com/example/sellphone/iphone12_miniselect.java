@@ -1,5 +1,6 @@
 package com.example.sellphone;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,20 +34,8 @@ public class iphone12_miniselect extends AppCompatActivity {
         findViewById(R.id.mnp).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                RESTfulAsyncTask restfulAsyncTask = new RESTfulAsyncTask(
-                        iphone12_miniselect.this,
-                        "https://sso1.mju.ac.kr/mju/userCheck.do",
-                        "POST",
-                        "Loading...",
-                        null,
-                        null,
-                        new AsyncCallback() {
-                            @Override
-                            public void responseCallback(int statusCode, Set<Map.Entry<String, List<String>>> headers, JSONObject body) {
-                                Toast.makeText(getApplicationContext(), body.toString(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                restfulAsyncTask.execute();
+                Intent intent = new Intent(getApplicationContext(), iphone12_mini_lowest_price.class);
+                startActivity(intent);
             }
         });
         findViewById(R.id.same).setOnClickListener(new View.OnClickListener() {
