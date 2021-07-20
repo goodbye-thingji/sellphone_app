@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">sellphone</string>
+    <string name="menu_gallery" />
+    <string name="menu_slideshow" />
+    <string name="menu_home" />
+    <string name="nav_header_desc" />
+    <string name="nav_header_title" />
+    <string name="nav_header_subtitle" />
+    <string name="action_settings" />
 </resources>
