@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">sellphone</string>
     <string name="server_client_id">767029746271-ibtgpkcokdu076seht02o4a3clf5dcft.apps.googleusercontent.com</string>
+    <string name="menu_gallery" />
+    <string name="menu_slideshow" />
+    <string name="menu_home" />
+    <string name="nav_header_desc" />
+    <string name="nav_header_title" />
+    <string name="nav_header_subtitle" />
+    <string name="action_settings" />
 </resources>

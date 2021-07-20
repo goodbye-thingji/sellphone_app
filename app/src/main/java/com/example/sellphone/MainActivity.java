@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -19,8 +20,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentManager;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
+
+import com.example.sellphone.ui.gallery.GalleryFragment;
+import com.example.sellphone.ui.home.HomeFragment;
+import com.example.sellphone.ui.slideshow.SlideshowFragment;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -40,6 +54,8 @@ public class MainActivity<phone1> extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     private long lastTime;
+    private Context context = this;
+    private AppBarConfiguration mAppBarConfiguration;
     ImageView phone, phone2, phone3, phone4, phone5, phone6, phone7, phone8, phone9, phone10, phone11, phone12;
 
     GoogleSignInOptions gso;
@@ -78,6 +94,40 @@ public class MainActivity<phone1> extends AppCompatActivity {
         ivMenu = findViewById(R.id.iv_menu);
         drawerLayout = findViewById(R.id.drawer);
         toolbar = findViewById(R.id.toolbar);
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+
+        });
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+                menuItem.setChecked(true);
+                drawerLayout.closeDrawers();
+
+                int id = menuItem.getItemId();
+                String title = menuItem.getTitle().toString();
+
+                if (id == R.id.inform) {
+                    Intent i = new Intent(context, GalleryFragment.class);
+                    context.startActivity(i);
+                } else if (id == R.id.mallinfo) {
+                    Intent i2 = new Intent(context, HomeFragment.class);
+                    context.startActivity(i2);
+                } else if (id == R.id.userguide) {
+                    Intent i3 = new Intent(context, SlideshowFragment.class);
+                    context.startActivity(i3);
+                }
+
+                return true;
+            }
+        });
 
         //액션바 변경하기(들어갈 수 있는 타입 : Toolbar type
         setSupportActionBar(toolbar);
@@ -158,6 +208,7 @@ public class MainActivity<phone1> extends AppCompatActivity {
         }
     }
 
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -186,7 +237,24 @@ public class MainActivity<phone1> extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main,menu);
-        return false;
+        return true;
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+                || super.onSupportNavigateUp();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:{ // 왼쪽 상단 버튼 눌렀을 때
+                drawerLayout.openDrawer(GravityCompat.START);
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
