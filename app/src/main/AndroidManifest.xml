@@ -46,6 +46,7 @@
         <activity android:name=".ui.info"/>
         <activity android:name=".ui.mallinfo"/>
         <activity android:name=".ui.userguide"/>
+        <activity android:name=".iphone12_mini_lowest_price"/>
     </application>
 
 </manifest>
