@@ -66,7 +66,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class MainActivity<phone1> extends AppCompatActivity {
+public class MainActivity<phone1> extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = "Main_Activity";
     private static final int RC_SIGN_IN = 5252;
 
@@ -77,6 +77,7 @@ public class MainActivity<phone1> extends AppCompatActivity {
     private long lastTime;
     private Context context = this;
     private AppBarConfiguration mAppBarConfiguration;
+    private NavigationView navigationView;
     ImageView phone, phone2, phone3, phone4, phone5, phone6, phone7, phone8, phone9, phone10, phone11, phone12;
 
     GoogleSignInOptions gso;
@@ -125,31 +126,8 @@ public class MainActivity<phone1> extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
-                menuItem.setChecked(true);
-                drawerLayout.closeDrawers();
-
-                int id = menuItem.getItemId();
-                String title = menuItem.getTitle().toString();
-
-                if (id == R.id.inform) {
-                    Intent i = new Intent(context, info.class);
-                    context.startActivity(i);
-                } else if (id == R.id.mallinfo) {
-                    Intent i2 = new Intent(context, mallinfo.class);
-                    context.startActivity(i2);
-                } else if (id == R.id.userguide) {
-                    Intent i3 = new Intent(context, userguide.class);
-                    context.startActivity(i3);
-                }
-
-                return true;
-            }
-        });
+        navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
         //액션바 변경하기(들어갈 수 있는 타입 : Toolbar type
         setSupportActionBar(toolbar);
@@ -177,6 +155,24 @@ public class MainActivity<phone1> extends AppCompatActivity {
             startActivityForResult(signInIntent, RC_SIGN_IN);
         }
     }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        int id = menuItem.getItemId();
+        if (id == R.id.inform) {
+            Intent i = new Intent(context, info.class);
+            context.startActivity(i);
+        } else if (id == R.id.mallinfo) {
+            Intent i2 = new Intent(getApplicationContext(), WhiteActivity.class);
+            startActivity(i2);
+        } else if (id == R.id.userguide) {
+            Intent i3 = new Intent(context, userguide.class);
+            context.startActivity(i3);
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv1:
